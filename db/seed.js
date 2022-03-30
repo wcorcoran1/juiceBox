@@ -8,13 +8,7 @@ const {
   createPost,
   updatePost,
   getAllPosts,
-  getPostsByUser,
-  createTags,
-  createPostTag,
-  addTagsToPost,
-  getPostById,
   getPostsByTagName,
-  getAllTags
 } = require("./index");
 
 async function dropTables() {
@@ -111,7 +105,7 @@ async function createInitialPosts() {
 
     console.log("Starting to create posts...");
     await createPost({
-      : albert.id,
+      authorId: albert.id,
       title: "First Post",
       content:
         "This is my first post. I hope I love writing blogs as much as I love writing them.",
@@ -119,14 +113,14 @@ async function createInitialPosts() {
     });
 
     await createPost({
-      : sandra.id,
+      authorId : sandra.id,
       title: "How does this work?",
       content: "Seriously, does this even do anything?",
       tags: ["#happy", "#worst-day-ever"],
     });
 
     await createPost({
-      : glamgal.id,
+      authorId : glamgal.id,
       title: "Living the Glam Life",
       content: "Do you even? I swear that half of you are posing.",
       tags: ["#happy", "#youcandoanything", "#canmandoeverything"],
