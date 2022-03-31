@@ -43,7 +43,7 @@ async function createTables() {
           );
             CREATE TABLE posts(
             id SERIAL PRIMARY KEY,
-            "" INTEGER REFERENCES users(id),
+            "authorId" INTEGER REFERENCES users(id),
             title VARCHAR(255) NOT NULL,
             content TEXT NOT NULL,
             active BOOLEAN DEFAULT true
@@ -113,14 +113,14 @@ async function createInitialPosts() {
     });
 
     await createPost({
-      authorId : sandra.id,
+      authorId: sandra.id,
       title: "How does this work?",
       content: "Seriously, does this even do anything?",
       tags: ["#happy", "#worst-day-ever"],
     });
 
     await createPost({
-      authorId : glamgal.id,
+      authorId: glamgal.id,
       title: "Living the Glam Life",
       content: "Do you even? I swear that half of you are posing.",
       tags: ["#happy", "#youcandoanything", "#canmandoeverything"],
@@ -178,7 +178,7 @@ async function testDB() {
 
     console.log("Calling updatePost on posts[1], only updating tags");
     const updatePostTagsResult = await updatePost(posts[1].id, {
-      tags: ["#youcandoanything", "#redfish", "#bluefish"]
+      tags: ["#youcandoanything", "#redfish", "#bluefish"],
     });
     console.log("Result:", updatePostTagsResult);
 
